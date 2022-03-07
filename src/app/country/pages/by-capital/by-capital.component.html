@@ -1,0 +1,32 @@
+<div class="animate__animated animate__fadeIn animate__faster">
+  
+  <h2>Por Capital</h2>
+  <hr>
+  
+  <div class="row">
+    <div class="col">
+      <app-country-input 
+        (eventSearching)="searchByCapital( $event )"
+        (eventDebounce)="suggestions( $event )"
+        placeholder="Buscar Capital">
+      </app-country-input>
+        
+    </div>
+  </div>
+
+</div>
+
+<hr>
+<div *ngIf="errSearch" class="alert alert-danger">
+  No se encontró nada con el termino {{ term }}
+</div>
+
+<div *ngIf="loading" class="alert alert-info">
+  Cargando, Espere por favor
+</div>
+
+<div *ngIf="dataCountries.length > 0 && !loading" class="row">
+  <div class="col">
+    <app-country-table [dataCountries]="dataCountries"></app-country-table>
+  </div>
+</div>

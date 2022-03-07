@@ -1,0 +1,45 @@
+<div *ngIf="!country; else contentCountry" 
+  class="alert alert-info">
+  Cargando, Espere por favor...
+</div>
+
+ <ng-template #contentCountry>
+   <div class="row">
+     <div class="col-12">
+       <h1>País: <small>{{ country.name.official }}</small></h1>
+     </div>
+   </div>
+   <div class="row">
+     <div class="col-4">
+       <h3>Bandera</h3>
+       <img [src]="country.flags.svg" [alt]="country.name" class="img-thumbnail" />
+     </div>
+     <div class="col">
+       <h3>Información</h3>
+       <ul class="list-group">
+         <li class="list-group-item">
+          <strong>Población:</strong> {{country.population | number }}
+         </li>
+         <li class="list-group-item">
+          <strong>Región:</strong> {{ country.region }}
+         </li>
+         <li class="list-group-item">
+          <strong>Código Alpha3:</strong> {{ country.cca2 }}
+         </li>
+       </ul>
+     </div>
+   </div>
+   <h3>Idiomas</h3>
+   <div class="row">
+    <div class="col">
+      <span class="badge bg-primary mr-1"> {{country.translations.ara.official}} </span>
+      <span class="badge bg-primary mr-1"> {{country.translations.ces.official}} </span>
+      <span class="badge bg-primary mr-1"> {{country.translations.cym.official}} </span>
+      <span class="badge bg-primary mr-1"> {{country.translations.deu.official}} </span>
+      <span class="badge bg-primary mr-1"> {{country.translations.ita.official}} </span>
+      <span class="badge bg-primary mr-1"> {{country.translations.spa.official}} </span>
+      <span class="badge bg-primary mr-1"> {{country.translations.per.official}} </span>
+
+    </div>
+   </div>
+ </ng-template>

@@ -1,0 +1,32 @@
+<table class="table table-hover table-responsive">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Bandera</th>
+      <th>Nombre</th>
+      <th>Población</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let country of dataCountries  | paginate: { itemsPerPage: 5, currentPage: p, totalItems: dataCountries.length} let i=index;"
+    class="animate__animated animate__fadeIn animate__faster">
+      <td> {{ i+1 }}</td>
+      <td>
+        <img [src]="country.flags.svg" alt="" class="small-flag">
+      </td>
+      <td>{{ country.capital }} - {{ country.name.official }}</td>
+      <td>{{ country.population | number }}</td>
+      <td>
+        <a [routerLink]="['/pais',country.cca2]">Ver más</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls *ngIf="dataCountries.length > 0"
+  (pageChange)="p = $event"
+  screenReaderPaginationLabel="Pagination"
+  [responsive]=true
+  previousLabel="Anterior"
+  nextLabel="Siguiente">
+</pagination-controls>
